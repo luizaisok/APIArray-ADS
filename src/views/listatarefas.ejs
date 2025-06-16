@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Tarefas</title>
+</head>
+<body>
+    <h5>Lista de Tarefas</h5>
+    <a href="/criartarefa">Criar nova tarefa</a>
+    <ul>
+        <% tarefasDoController.forEach(tarefa => { %> 
+            <li>
+                ID: <%= tarefa.id %> - 
+                Título: <%= tarefa.titulo %> - 
+                Descrição: <%= tarefa.descricao %> - 
+                Data: <%= tarefa.data %> - 
+                Status: <%= tarefa.status %>
+                <a href="/editartarefa/<%= tarefa.id %>">Editar</a> <% /* O <a> só suporta GET, por isso essa maracutaia do form para o DELETE*/ %>
+                <form action="/tarefa/<%= tarefa.id %>?_method=DELETE" method="POST" style="display:inline;">
+                    <button type="submit">Excluir</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>

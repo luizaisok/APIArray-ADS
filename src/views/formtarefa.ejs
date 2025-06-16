@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Tarefa</title>
+</head>
+<body>
+    <h3>Cadastro de Tarefa</h3>
+    <form action="<%= tarefa.id ? '/tarefa?_method=PUT' : '/tarefa' %>" method="POST"> <% /* Vai suportar PUT pelo method-override */ %>
+        <% if (tarefa.id) { %> <input type="hidden" id="id" name="id" value="<%= tarefa.id %>" readonly /> <% } %>
+
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" name="titulo" value="<%= tarefa.titulo %>" />
+
+        <label for="descricao">Descrição</label>
+        <input type="text" id="descricao" name="descricao" value="<%= tarefa.descricao %>" />
+
+        <label for="data">Data de Vencimento</label>
+        <input type="text" id="data" name="data" value="<%= tarefa.data %>" />
+
+        <label for="status">Status</label>
+        <input type="text" id="status" name="status" value="<%= tarefa.status %>" />
+
+        <input type="submit" />
+    </form>
+</body>
+</html>
